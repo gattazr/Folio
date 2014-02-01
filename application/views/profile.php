@@ -10,7 +10,7 @@ include ('templates/headmenu.php');
 	open_page_header('template page');
 	
 	//This is for the image browser.. works because Im welcome page....
-	echo '<script type="text/javascript" src="assets/html5gallery/html5gallery.js"></script>';
+	
 	close_page_header();?>
 	<body>
 		<?php headmenu(); ?>
@@ -27,13 +27,52 @@ include ('templates/headmenu.php');
 			<div class="row">
 				<div class="col-sm-5">
 					<div class="page-image">
-        					<img src="https://dl.dropboxusercontent.com/u/15980708/IMG_3416.jpg" 
-								alt="Smiley face" width="320" height="320">	
+
+							<canvas id="myCanvas" width="320" height="320"></canvas>
+							
+							<script>
+							function resizeImage(xSize, ySize, src)
+							{
+							var canvas = document.getElementById('myCanvas');
+							var context = canvas.getContext('2d');
+							var x;
+							var y;
+							var width;
+							var height;
+							var img = new Image();
+
+							img.onload = function()
+							{
+								if(img.height < img.width)
+								{
+									height = xSize;
+									width = (img.width*ySize)/img.height;
+									y = (img.width/2) - (width/2);
+									x = (img.height/2) - (height/2);
+								}
+								else
+								{
+									width = ySize;
+									height = (img.height*ySize)/img.width;
+									y = (img.width/2) - (width/2);
+									x = (img.height/2) - (height/2);
+
+								}
+								context.drawImage(img, x, y, width, height);
+							}
+							//img.src = 'http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg';
+							img.src = src;
+
+							}
+							resizeImage(320,320,'http://www.html5canvastutorials.com/demos/assets/darth-vader.jpg');
+							</script>
+
+        					<!--<img src="https://dl.dropboxusercontent.com/u/15980708/IMG_3416.jpg" 
+								alt="Smiley face" width="320" height="320">	-->
 					</div>
 				</div>
 
-				<div class="col-sm-3" style="border->
-					<div class="panel panel-default">
+				<div class="col-sm-3">
 						<div class="panel-heading">
 							<h3 class="panel-title">Information</h3>
 						</div>
@@ -44,11 +83,10 @@ include ('templates/headmenu.php');
 								<li>Country: COUNTRY</li>
 							</ul>
 						</div>
-					</div>
+				</div>
 				
 
-				<div class="col-sm-4" style="border->
-					<div class="panel panel-default">
+				<div class="col-sm-4">
 						<div class="panel-heading">
 							<h3 class="panel-title">Skills</h3>
 						</div>
@@ -60,9 +98,9 @@ include ('templates/headmenu.php');
 								<li>iOS Development: 7 Years</li>
 							</ul>
 						</div>
-					</div>
+				</div>
 
-				</div>			
+			</div>			
 
 			
 		
