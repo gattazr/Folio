@@ -104,6 +104,8 @@ class User extends CI_Controller {
 		$data["city"] = $this->input->post('city');
 		$data["country"] = $this->input->post('country');
 
+        $data["avatar"] = NULL;
+
 		$this->user->insert_entry($data);
 		
 		

@@ -109,6 +109,7 @@ class project_model extends CI_Model {
         $this->logo = $aProject['logo'];
         $this->startdate = $aProject['startdate'];
         $this->enddate = $aProject['enddate'];
+        $this->category_id = $aProject['category_id'];
 
         $this->db->insert('project', $this);
 

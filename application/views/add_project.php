@@ -25,14 +25,24 @@ include ('templates/info_card.php');
 						<input type="file" name="logo" placeholder="Logo"><br><br>
 						<input type="text" name="startdate" placeholder="Start date (e.g. 2014-01-31)"><br><br>
 						<input type="text" name="enddate" placeholder="End date (e.g. 2014-01-31)"><br><br>
-					<input type="text" name="category" placeholder="Category"><br><br>
+				<!--	<input type="text" name="category" placeholder="Category"><br><br> -->
+                        <select name="category_id">
+                        <?php
+                        $options = $categoryArray;
+                        foreach($options as $category){
+                        echo '<option value="';
+                        echo $category['id'];
+                        echo '">';
+                        echo $category['name'];
+                        echo '</option><br>';
+                        } ?>
+                        </select>
                     <input type="hidden" name="project_id" value="0">
-                    <input type="hidden" name="owner_id" value="0">
-					<input type="submit" value="Add Project">
+                    <input type="hidden" name="owner_id" value="<?php echo $id ?>">
+					<input type="submit" name="submitted" value="Add Project">
 							<input type="reset" value="Clear">
 					</form>
 				</div>
-
 		
 	</div>
 					
