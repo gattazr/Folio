@@ -19,7 +19,10 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('example');
+		$this->load->model('user_model');
+		$this->user_model->update_entry();
+//		$this->skill_model->insert();
 	}
 }
 

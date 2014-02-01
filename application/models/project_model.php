@@ -23,12 +23,11 @@ class project_model extends CI_Model {
 
         $query = $this->db->get();
 
-        return $query;
+        return $query->result_array();
     }
 
 
     function get_one(){
-
 
         $this->db->select('id,owner,name,description,logo,startdate,enddate');
         $this->db->from('project');
@@ -36,7 +35,7 @@ class project_model extends CI_Model {
 
         $query = $this->db->get();
 
-        return $query;
+        return $query->result_array();
     }
 
 
@@ -51,7 +50,7 @@ class project_model extends CI_Model {
         $this->startdate = $this->input->post('startdate');
         $this->enddate = $this->input->post('enddate');
 
-        $this->db->insert('user', $this);
+        $this->db->insert('project', $this);
     }
 
     function update_entry() {
