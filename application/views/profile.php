@@ -18,6 +18,14 @@ include ('templates/headmenu.php');
 
 			<div class="row">
 				<div class="col-sm-5">
+					<div class="page-header">
+        				<h2> First Last</h2>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-5">
 					<div class="page-image">
         					<img src="https://dl.dropboxusercontent.com/u/15980708/IMG_3416.jpg" 
 								alt="Smiley face" width="320" height="320">	
@@ -31,7 +39,6 @@ include ('templates/headmenu.php');
 						</div>
 						<div class="panel-body">
 							<ul class="nav bs-sidebar">
-								<li>Name: First Last</li>
 								<li>UserName: USERNAME</li>
 								<li>City: CITY</li>
 								<li>Country: COUNTRY</li>
@@ -39,6 +46,7 @@ include ('templates/headmenu.php');
 						</div>
 					</div>
 				
+
 				<div class="col-sm-4" style="border->
 					<div class="panel panel-default">
 						<div class="panel-heading">
@@ -56,7 +64,10 @@ include ('templates/headmenu.php');
 
 				</div>			
 
+			
 		
+
+			
 			
 			<!--if this user is the one signed in say 'My Projects', otherwise say 'Their Projects' -->
 			<div class="page-header">
