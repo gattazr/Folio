@@ -14,6 +14,15 @@ class project_model extends CI_Model {
         parent::__construct();
     }
 
+    function get_collaborators() {
+        $projectID = 1;
+        $this->db->select('user.firstname, user.lastname, user.city, user.country, user.avatar, collaborators.start_date, collaborators.description');
+        $this->db->from('user, project, collaborators');
+        $where = 'user.id = collaborators.user_id AND collaborators.project_id = project.id AND project.id = ' . $projectID;        
+        $this->db->where($where);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
     function get_popular(){
 
