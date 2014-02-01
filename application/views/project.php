@@ -110,8 +110,8 @@ include ('templates/info_card.php');
 			</div>
 	<div class="row">
 	<?php
-
-		foreach($collaborators as $row){
+        user_info_card($user[0], 4);
+        foreach($collaborators as $row){
             user_info_card($row, 4);
         } 
     ?>
