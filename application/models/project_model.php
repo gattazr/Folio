@@ -15,7 +15,7 @@ class project_model extends CI_Model {
     }
 
 
-    function get_top_three(){
+    function get_popular(){
 
         $this->db->select('id,owner,name,description,logo,startdate,enddate');
         $this->db->from('project');
@@ -23,10 +23,30 @@ class project_model extends CI_Model {
 
         $query = $this->db->get();
 
-        return $query;
+        return $query->result_array();
     }
 
+    function get_local(){
 
+        $this->db->select('id,owner,name,description,logo,startdate,enddate');
+        $this->db->from('project');
+        $this->db->limit('3');
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    function get_recent(){
+
+        $this->db->select('id,owner,name,description,logo,startdate,enddate');
+        $this->db->from('project');
+        $this->db->limit('3');
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
     function get_one(){
 
 
@@ -51,20 +71,22 @@ class project_model extends CI_Model {
         $this->startdate = $this->input->post('startdate');
         $this->enddate = $this->input->post('enddate');
 
-        $this->db->insert('user', $this);
+
+        $this->db->insert('project', $this);
     }
 
+   /* 
     function update_entry() {
         
         $this->id = $this->input->post('id');
 
         $data = array(
-            'owner' = $this->input->post('owner'),
-            'name' = $this->input->post('name'),
-            'description' = $this->input->post('description'),
-            'logo' = $this->input->post('logo'),
-            'startdate' = $this->input->post('startdate'),
-            'enddate' = $this->input->post('enddate'),
+                    'owner' = $this->input->post('owner'),
+                    'name' = $this->input->post('name'),
+                    'description' = $this->input->post('description'),
+                    'logo' = $this->input->post('logo'),
+                    'startdate' = $this->input->post('startdate'),
+                    'enddate' = $this->input->post('enddate'),
         );
 
         $this->db->where('id', $this->id);
@@ -76,7 +98,7 @@ class project_model extends CI_Model {
 
         NULL;
     }
-
+    */
 }
 
 
