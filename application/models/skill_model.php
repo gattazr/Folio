@@ -23,57 +23,42 @@ class skill_model extends CI_Model {
 
 
     function insert_entry() {
-        /*
-        $this->owner_id = $this->input->post('owner_id');
-        $this->name = $this->input->post('name');
-        $this->level = $this->input->post('level');
-        */
+        $wOwner['owner'] = $this->input->post('owner_id');
+        $wOwner['name'] = $this->input->post('name');
+        $wOwner['level'] = $this->input->post('level');
+        
 
-        $this->owner = '12';
-        $this->name = 'dev_croftp2skill';
-        $this->level = 'dev_croftp2skilllevel';
+        $this->owner = $wOwner['owner'];
+        $this->name = $wOwner['name'];
+        $this->level = $wOwner['leve'];
 
         $this->db->insert('skill', $this);
     }
 
     function remove_entry(){
-        /*
-        $this->owner_id = $this->input->post('owner_id');
-        $this->name = $this->input->post('name');
-        */
+        $wOwner['owner'] = $this->input->post('owner_id');
+        $wOwner['name'] = $this->input->post('name');
 
-/*
-        $this->owner_id = 'dev_croftp2username';
-        $this->name = 'dev_croftp2firstname';
-        
+
+        $this->owner_id = $wOwner['owner'];
+        $this->name = $wOwner['name'];        
         $this->db->delete('skill', $this);
-*/
-        NULL;
     }
 
     function modify_entry(){
-        /*
-        $this->owner_id = $this->input->post('owner_id');
-        $this->name = $this->input->post('name');
-        */
-
-        $this->owner = '12';
-        $this->name = 'sql wrangling';
+        $wOwner['owner'] = $this->input->post('owner_id');
+        $wOwner['name'] = $this->input->post('name');
+        $wOwner['level'] = $this->input->post('level');
 
         $data = array(
-            /*
-            'name' => $this->input->post('name'),
-            'level' => $this->input->post('level')
-            */
-            'name' => 'writing code',
-            'level' => 'the best'
+            'owner' => $wOwner['owner_id'],
+            'name' => $wOwner['owner'],
+            'level' => $wOwner['name']
         );
 
-        $this->db->where('owner', $this->owner);
+        $this->db->where('owner', $data['data']);
         $this->db->where('name', $this->name);
-        $this->db->update('skill', $data);
-
-
+        $this->db->update('pskill', $data);
     }
 }
 

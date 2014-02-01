@@ -11,9 +11,7 @@ class pskill_model extends CI_Model {
     }
 
     function get_entry($key, $value){
-//        $this->owner_id = $this->input->post('owner_id');
-        //$this->owner = $key;
-        $this->db->select('name,level');
+        $this->db->select('owner, name,level');
         $this->db->where($key,$value);
 
         $query = $this->db->get('pskill')->result_array();
@@ -22,58 +20,43 @@ class pskill_model extends CI_Model {
     }
 
 
-    function insert_entry() {
-        /*
-        $this->owner_id = $this->input->post('owner_id');
-        $this->name = $this->input->post('name');
-        $this->level = $this->input->post('level');
-        */
+    function insert_entry() {      
+        $wOwner['owner'] = $this->input->post('owner_id');
+        $wOwner['name'] = $this->input->post('name');
+        $wOwner['level'] = $this->input->post('level');
+        
 
-        $this->owner = '3';
-        $this->name = 'basket weaving';
-        $this->level = 'PhD+';
+        $this->owner = $wOwner['owner'];
+        $this->name = $wOwner['name'];
+        $this->level = $wOwner['leve'];
 
         $this->db->insert('pskill', $this);
     }
 
     function remove_entry(){
-        /*
-        $this->owner_id = $this->input->post('owner_id');
-        $this->name = $this->input->post('name');
-        */
+        $wOwner['owner'] = $this->input->post('owner_id');
+        $wOwner['name'] = $this->input->post('name');
 
-/*
-        $this->owner_id = 'dev_croftp2username';
-        $this->name = 'dev_croftp2firstname';
-        
-        $this->db->delete('skill', $this);
-*/
-        NULL;
+
+        $this->owner_id = $wOwner['owner'];
+        $this->name = $wOwner['name'];        
+        $this->db->delete('pskill', $this);
     }
 
     function modify_entry(){
-        /*
-        $this->owner_id = $this->input->post('owner_id');
-        $this->name = $this->input->post('name');
-        */
-
-        $this->owner = '3';
-        $this->name = 'basket weaving';
+        $wOwner['owner'] = $this->input->post('owner_id');
+        $wOwner['name'] = $this->input->post('name');
+        $wOwner['level'] = $this->input->post('level');
 
         $data = array(
-            /*
-            'name' => $this->input->post('name'),
-            'level' => $this->input->post('level')
-            */
-            'name' => 'writing code',
-            'level' => 'the best'
+            'owner' => $wOwner['owner_id'],
+            'name' => $wOwner['owner'],
+            'level' => $wOwner['name']
         );
 
-        $this->db->where('owner', $this->owner);
+        $this->db->where('owner', $data['data']);
         $this->db->where('name', $this->name);
         $this->db->update('pskill', $data);
-
-
     }
 }
 

@@ -21,51 +21,45 @@ class collaborators_model extends CI_Model {
 
 
     function insert_entry() {
-/*
-        $this->user_id = $this->input->post('user_id');
-        $this->project_id = $this->input->post('project_id');
-        $this->start_date = $this->input->post('path');
-        $this->end_date = $this->input->post('path');
-*/
-        $this->user_id = '2';
-        $this->project_id = '1';
-        $this->start_date = '20140130';
-        $this->end_date = 'NULL';
+
+        $wCollaborator['id'] = $this->input->post('id');
+        $wCollaborator['project_id'] = $this->input->post('project_id');
+        $wCollaborator['start_date'] = $this->input->post('start_date');
+        $wCollaborator['end_date'] = $this->input->post('end_date');
+
+        $this->user_id = $wCollaborator['id'];
+        $this->project_id = $wCollaborator['project_id'];
+        $this->start_date = $wCollaborator['start_date'];
+        $this->end_date = $wCollaborator['end_date'];
 
         $this->db->insert('collaborators', $this);
     }
 
     function update_entry() {
-        /*
-        $this->user_id = $this->input->post('user_id');
-        $this->project_id = $this->input->post('project_id');
-        */
-
-        $this->user_id = '2';
-        $this->project_id = '1';
+        
+        $wCollaborator['id'] = $this->input->post('id');
+        $wCollaborator['project_id'] = $this->input->post('project_id');
+        $wCollaborator['start_date'] = $this->input->post('start_date');
+        $wCollaborator['end_date'] = $this->input->post('end_date');
 
         $data = array(
-            /*
-            'user_id' => $this->input->post('user_id2'),
-            'project_id' => $this->input->post('project_id2'),
-            'start_date' => $this->input->post('start_date2'),
-            'end_date' => $this->input->post('end_date2')
-            */
-            'user_id' => '2',
-            'project_id' => '1',
-            'start_date' => '19700101',
-            'end_date' => NULL
+            'user_id' => $wCollaborator['id'],
+            'project_id' => $wCollaborator['project_id'],
+            'start_date' => $wCollaborator['start_date'],
+            'end_date' => $wCollaborator['end_date']
         );
 
-        $this->db->where('user_id', $this->user_id);
-        $this->db->where('project_id', $this->project_id);
+        $this->db->where('user_id', $data['user_id']);
+        $this->db->where('project_id', $data['project_id']);
         $this->db->update('collaborators', $data);
 
     }
 
     function remove_entry(){
-
-        NULL;
+        $wCollaborator['id'] = $this->input->post('id');
+        
+        $this->db->where('id', $wCollaborator['id']);
+        $this->db->delete('collaborators');   
     }
 
 }
