@@ -109,7 +109,7 @@ include ('templates/info_card.php');
 			</div>
 	<div class="row">
 	<?php
-        user_info_card($user[0], 4);
+        user_info_card($user, 4);
         foreach($collaborators as $row){
             user_info_card($row, 4);
         } 

@@ -30,7 +30,7 @@ function project_info_card($project, $colWidth) {
     echo $project['logo'];
     echo '"/></div>';
     echo '<div class="panel-text">';
-    echo 'By Someone';
+    //echo 'By Someone';
     echo $project['description'];
     echo '</div></div></div></div>';
 }
