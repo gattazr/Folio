@@ -10,6 +10,9 @@ function open_page_header($aTitle){
 		<link href="dist/css/bootstrap.min.css" rel="stylesheet">
 		<!-- Bootstrap theme -->
 		<link href="dist/css/bootstrap-theme.min.css" rel="stylesheet">
+
+		<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    	<script src="dist/js/bootstrap.min.js"></script>
 	<?
 }
 
