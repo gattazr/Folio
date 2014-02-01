@@ -23,6 +23,9 @@ class Search extends CI_Controller {
 		$this->load->model('category_model');
 		$data['categoryArray'] = $this->category_model->get_entrys();
 
+        $this->load->model('project_model');
+        $data['projectArray'] = $this->project_model->get_popular();
+
 		$this->load->view('search_page', $data);
 
 

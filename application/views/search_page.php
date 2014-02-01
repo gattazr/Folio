@@ -56,17 +56,21 @@ include ('templates/headmenu.php');
             <div class="col-sm-9">
 
                     <?php
-                        $projects = array(1, 2,3,4,5); //1 for now but will be array of members later. Always has at least one.
+//                        $projects = array(1, 2,3,4,5); //1 for now but will be array of members later. Always has at least one.
+                        $projects = $projectArray;
+
                         foreach($projects as &$project)
                         {?>
 	                        <div class="col-sm-4">
 		                        <div class="panel panel-default">
 			                        <div class="panel-heading">
 				
-				                        <h3 class="panel-title">Project</h3>
+				                        <h3 class="panel-title">
+                                        <?php echo $project['name'] ?>
+                                        </h3>
 			                        </div>
 			                        <div class="panel-body">
-			                        <img />
+                                    <img src="<?php echo $project['logo'] ?>" alt="t"  height="250" width="220">
 
 			                        </div>
 		                        </div>
