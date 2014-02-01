@@ -23,10 +23,10 @@ include ('templates/headmenu.php');
 				<div class="col-sm-4">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">A project</h3>
+							<h3 class="panel-title"><?php echo $name;?></h3>
 						</div>
 						<div class="panel-body">
-							and its description
+							<?php echo $description;?>
 						</div>
 					</div>
 				</div><!-- /.col-sm-4 -->
