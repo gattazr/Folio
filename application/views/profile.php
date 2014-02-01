@@ -25,43 +25,7 @@ include ('templates/info_card.php');
 			<div class="row">
 				<div class="col-sm-5">
 					<div class="page-image">
-        					<canvas id="myCanvas" width="320" height="320"></canvas>
-							
-							<script>
-								function resizeImage(xSize, ySize, src)
-								{
-									var canvas = document.getElementById('myCanvas');
-									var context = canvas.getContext('2d');
-									var x;
-									var y;
-									var width;
-									var height;
-									var img = new Image();
-
-									img.onload = function()
-									{
-										if(img.height < img.width)
-										{
-											height = xSize;
-											width = (img.width*ySize)/img.height;
-											y = (img.width/2) - (width/2);
-											x = (img.height/2) - (height/2);
-										}
-										else
-										{
-											width = ySize;
-											height = (img.height*ySize)/img.width;
-											y = (img.width/2) - (width/2);
-											x = (img.height/2) - (height/2);
-
-										}
-										context.drawImage(img, x, y, width, height);
-									}
-									img.src = src;
-
-								}
-								resizeImage(320,320, <?php echo '\''.$users['avatar'].'\'';?>);
-							</script>
+						<img src=<?php echo $users['avatar'];?> style='max-width:100%;overflow:hidden;'>
 					</div>
 				</div>
 
@@ -101,7 +65,6 @@ include ('templates/info_card.php');
 				</div>	
 			</div>
 
-			<!--if this user is the one signed in say 'My Projects', otherwise say 'Their Projects' -->
 			<div class="page-header">
         		<h2>My Projects</h2>
 			</div>

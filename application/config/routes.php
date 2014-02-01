@@ -41,7 +41,7 @@
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 
-$route['user/(([a-z]|[1-9][A-Z])+)'] = "user/showUser/$1";
+$route['user/([a-zA-Z0-9]+)'] = "user/showUser/$1";
 $route['user/profile'] = "user/profile";
 
 $route['project/(:num)'] = "project/showProject/$1";

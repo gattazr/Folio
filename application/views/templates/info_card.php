@@ -28,7 +28,7 @@ function project_info_card($project, $colWidth) {
     echo '<div class="panel-image">';
     echo '<img src="';
     echo $project['logo'];
-    echo '"/></div>';
+    echo '" style="max-width:100%;overflow:hidden;"/></div>';
     echo '<div class="panel-text">';
     //echo 'By Someone';
     echo $project['description'];
@@ -52,7 +52,7 @@ function user_info_card($user, $colWidth) {
     echo '<div class="panel-image">';
     echo '<img src="';
     echo $user['avatar'];
-    echo '"/></div>';
+    echo '" style="max-width:100%;overflow:hidden;"/></div>';
     echo '<div class="panel-text">';
     if (isset($user['description'])) {
         echo $user['description'];

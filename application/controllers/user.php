@@ -70,7 +70,7 @@ class User extends CI_Controller {
 		}
 		$wSkills = $this->skill->find_entries('owner',$wUser['id']);
 		$wCollaborators = $this->collaborator->find_collaborators('user_id', $wUser['id']);
-		$wProjects = null;
+		$wProjects = $this->project->find_entry('owner', $wUser['id']);
 		if($wCollaborators){
 			foreach($wCollaborators as $wCollaborator){
 				$wProject = $this->project->find_entry('id', $wCollaborator['project_id']);
