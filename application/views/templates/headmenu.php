@@ -1,6 +1,10 @@
 <?php
 function headmenu(){
-
+	$CI =& get_instance();
+	$isLogged = true;
+	if ( ! $CI->session->userdata('username')) { 
+		$isLogged = false;
+	}
 ?>
 <style>
 body{
@@ -25,23 +29,32 @@ body{
 			<ul class="nav navbar-nav">
 				<li><a href=<?php echo base_url('index.php/project/all');?>>Projects</a></li>
 				<li><a href=<?php echo base_url('index.php/project/new');?>>Start a project</a></li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">You <b class="caret"></b></a>
-					<ul class="dropdown-menu dropdown-menu-left">
-						<li><a href=<?php echo base_url('index.php/user/profile');?>>Profile</a></li>
-						<li><a href=<?php echo base_url('index.php/user/sign_out');?>>Sign out</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>				
-					<div class="dropdown-menu dropdown-menu-left" style="padding: 15px; padding-bottom: 0px;">
-						<form class="navbar-right" method='POST' action=<?php echo base_url('index.php/user/sign_in');?> role="form">
-							<input type="text" name='mail' placeholder="Email" class="form-control" autocomplete="off" keyev="true" clickev="true" style="padding-right: 5px;margin-bottom: 10px;">
-							<input type="password" name='password' placeholder="Password" class="form-control" autocomplete="off" keyev="true" clickev="true" style="padding-right: 5px;margin-bottom: 10px;">
-							<button type="submit" class="btn btn-success" style="width:100%">Sign in</button>
-						</form>
-					</div>
-				</li>
+				<?php
+				if($isLogged){
+				?>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">You <b class="caret"></b></a>
+						<ul class="dropdown-menu dropdown-menu-left">
+							<li><a href=<?php echo base_url('index.php/user/profile');?>>Profile</a></li>
+							<li><a href=<?php echo base_url('index.php/user/sign_out');?>>Sign out</a></li>
+						</ul>
+					</li>
+				<?php
+				}else{
+				?>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>				
+						<div class="dropdown-menu dropdown-menu-left" style="padding: 15px; padding-bottom: 0px;">
+							<form class="navbar-right" method='POST' action=<?php echo base_url('index.php/user/sign_in');?> role="form">
+								<input type="text" name='mail' placeholder="Email" class="form-control" autocomplete="off" keyev="true" clickev="true" style="padding-right: 5px;margin-bottom: 10px;">
+								<input type="password" name='password' placeholder="Password" class="form-control" autocomplete="off" keyev="true" clickev="true" style="padding-right: 5px;margin-bottom: 10px;">
+								<button type="submit" class="btn btn-success" style="width:100%">Sign in</button>
+							</form>
+						</div>
+					</li>
+				<?php 
+				}
+				?>
 			</ul>
 		</div><!--/.nav-collapse -->
 	</div>
