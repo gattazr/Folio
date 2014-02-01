@@ -19,7 +19,7 @@ class User extends CI_Controller {
 	 */
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('user_model');
+		$this->load->model('user_model', 'user');
 		$this->load->library('encrypt');
 	}
 
@@ -29,17 +29,33 @@ class User extends CI_Controller {
 	}
 
 	public function sign_in(){
-		
-		$mail = $this->input->post('mail');
-		$password = $this->encrypt->sha1($this->input->post('password'));
+		if(!$this->session->userdata('username')){
+			$email = $this->input->post('email');
+			$password = $this->encrypt->sha1($this->input->post('password'));
 
-		if($result = $this->user->login($mail, $password)){
-			echo 'login possible';
+			if($result = $this->user->login($email, $password)){
+				$isAdmin = ($result->id== 1)? true : false;
+				$data = array(
+					'id' => $result->id,
+					'username'  => $result->username,
+					'email'     => $result->email,
+					'admin' => $isAdmin
+				);
+				$this->session->set_userdata($data);
+			}
 		}
-		echo 'failed login';
-		//echo $encrypted_string;
-		//header('Location: ' . $_SERVER['HTTP_REFERER']);
+		header('Location: ' . $_SERVER['HTTP_REFERER']);
 	}
+
+	public function sign_out(){
+		$this->session->sess_destroy();
+		header('Location: ' . base_url(''));
+	}
+
+	public function profile(){
+		$this->load->view('profile');
+	}
+
 }
 
 /* End of file welcome.php */
