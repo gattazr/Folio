@@ -52,8 +52,9 @@ class project_model extends CI_Model {
 
     function get_local(){
 
-        $this->db->select('id,owner,name,description,logo,startdate,enddate');
-        $this->db->from('project');
+        $this->db->select('project.id, project.owner, project.name, project.description, project.logo, project.startdate, project.enddate');
+        $this->db->from('project, user');
+        $this->db->where('owner = user.id AND user.city = "Bellingham"');
         $this->db->limit('3');
 
         $query = $this->db->get();
@@ -65,6 +66,7 @@ class project_model extends CI_Model {
 
         $this->db->select('id,owner,name,description,logo,startdate,enddate');
         $this->db->from('project');
+        $this->db->order_by('startdate', 'desc');
         $this->db->limit('3');
 
         $query = $this->db->get();
