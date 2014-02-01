@@ -98,8 +98,8 @@ class User extends CI_Controller {
 			header('Location: ' . $_SERVER['HTTP_REFERER']);
 			
 		}	
-		$data["firstname"] = $this->input->post('First name');
-		$data["lastname"] = $this->input->post('Last name');
+		$data["firstname"] = $this->input->post('firstname');
+		$data["lastname"] = $this->input->post('lastname');
 		$data["city"] = $this->input->post('city');
 		$data["country"] = $this->input->post('country');
 

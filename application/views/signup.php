@@ -23,8 +23,8 @@ include ('templates/info_card.php');
 						<input type="text" name="email" placeholder="Email"><br><br>
 						<input type="password" name="password" placeholder="Password"><br><br>
 						<input type="password" name="confpass" placeholder="Confirm Password"><br><br><br>
-					<input type="text" name="First Name" placeholder="First Name"><br><br>
-					<input type="text" name="Last Name" placeholder="Last Name"><br><br><br>
+					<input type="text" name="firstname" placeholder="First Name"><br><br>
+					<input type="text" name="lastname" placeholder="Last Name"><br><br><br>
 					<input type="text" name="city" placeholder="City"><br><br>
 					<input type="text" name="country" placeholder="Country"><br><br>
 					Choose a Profile Picture

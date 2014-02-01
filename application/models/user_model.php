@@ -26,63 +26,44 @@ class User_model extends CI_Model {
         return $wResult[0];
     }
 
-    function insert_entry($aArray) {
+    function insert_entry($aModel) {
         
         $this->id = 0;
-        $this->username = $aArray['username'];
-        $this->firstname = $aArray['firstname'];
-        $this->lastname = $aArray['lastname'];
-        $this->city = $aArray['city'];
-        $this->country = $aArray['country'];
-        $this->avatar = $aArray['avatar'];
-        $this->password = $aArray['password'];
-        $this->email = $aArray['email'];
+        $this->username = $aModel['username'];
+        $this->firstname = $aModel['firstname'];
+        $this->lastname = $aModel['lastname'];
+        $this->city = $aModel['city'];
+        $this->country = $aModel['country'];
+        $this->avatar = $aModel['avatar'];
+        $this->password = $aModel['password'];
+        $this->email = $aModel['email'];
 
         $this->db->insert('user', $this);
     }
 
-    /*
-    function delete_entry() {
-        $username = 'devDusername';
-        $this->db->where('username', $username);
+    
+    function delete_entry($aModel) {
+        $this->db->where('username', $aModel['username']);
         $this->db->delete('user');
     }
-    */
+    
 
-    function update_entry() {
+    function update_entry($aModel) {
         
-//        $this->username = $this->input->post('username');
-        $this->username = 'devEusername';
-
         $data = array(
-/*
-            'username' => $this->input->post('username'),
-            'firstname' => $this->input->post('firstname'),
-            'lastname' => $this->input->post('lastname'),
-            'city' => $this->input->post('city'),
-            'country' => $this->input->post('country'),
-            'avatar' => $this->input->post('avatar'),
-            'password' => $this->input->post('password'),
-            'email' => $this->input->post('email')
-*/
-            'username' => 'username',
-            'firstname' => 'firstname',
-            'lastname' => 'lastname',
-            'city' => 'city',
-            'country' => 'country',
-            'avatar' => 'avatar',
-            'password' => 'password',
-            'email' => 'email'
+            'username' => $aModel['username'],
+            'firstname' => $aModel['firstname'],
+            'lastname' => $aModel['lastname'],
+            'city' => $aModel['city'],
+            'country' => $aModel['country'],
+            'avatar' => $aModel['avatar'],
+            'password' => $aModel['password'],
+            'email' => $aModel['email']
         );
 
-        $this->db->where('username', $this->username);
+        $this->db->where('username', $data['username']);
         $this->db->update('user', $data);
 
-    }
-
-    function remove_entry(){
-
-        NULL;
     }
     
     function login($email, $password){

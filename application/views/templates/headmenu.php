@@ -44,13 +44,13 @@ body{
 				?>
 					<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>				
-						<div class="dropdown-menu dropdown-menu-left" style="padding: 15px; padding-bottom: 0px;">
+						<div class="dropdown-menu dropdown-menu-left" style="padding: 15px; padding-bottom: 15px;">
 							<form class="navbar-right" method='POST' action=<?php echo base_url('index.php/user/sign_in');?> role="form">
 								<input type="text" size='50' name='mail' placeholder="Email" class="form-control" autocomplete="off" keyev="true" clickev="true" style="padding-right: 5px;margin-bottom: 10px;">
 								<input type="password" size='50' name='password' placeholder="Password" class="form-control" autocomplete="off" keyev="true" clickev="true" style="padding-right: 5px;margin-bottom: 10px;">
-								<button type="submit" class="btn btn-success" style="width:100%;margin-bottom: 10px">Sign in</button>
-								<a href=<?php echo base_url('index.php/user/sign_up');?>><button class="btn btn-info" style="width:100%">Register</button></a>
+								<button type="submit" class="btn btn-success" style="width:100%;">Sign in</button>
 							</form>
+							<a href=<?php echo base_url('index.php/user/sign_up');?>><button class="btn btn-info" style="width:100%">Register</button></a>
 						</div>
 					</li>
 				<?php 
