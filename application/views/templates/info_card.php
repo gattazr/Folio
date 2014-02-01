@@ -22,8 +22,8 @@ function project_info_card($project, $colWidth) {
     echo '<div class="panel panel-default">';
     echo '<div class="panel-heading">';
 	echo '<h3 class="panel-title">';
-    echo '<a href="../project/';
-    echo $project['id'];
+    echo '<a href="';
+    echo base_url('index.php/project/' . $project['id']);
     echo '">';
     echo $project['name'];
     echo '</a>';
@@ -48,8 +48,8 @@ function user_info_card($user, $colWidth) {
     echo '<div class="panel panel-default">';
     echo '<div class="panel-heading">';
 	echo '<h3 class="panel-title">';
-    echo '<a href="../user/';
-    echo $user['username'];
+    echo '<a href="';
+    echo base_url('index.php/user/' . $user['username']);
     echo '">';
     echo $user['firstname'];
     echo ' ';
