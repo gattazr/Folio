@@ -13,11 +13,26 @@ class project_model extends CI_Model {
     function __construct() {
         parent::__construct();
     }
-
+    function get_like($aLikes){
+        $this->db->select('id, owner, name, description, logo, startdate, enddate, status, category_id');
+        $this->db->from('project');
+        foreach ($aLikes as $wLike){
+            $this->db->or_like( $wLike[0], $wLike[1]); 
+        }
+        $query = $this->db->get();
+        return $query->result_array();
+    }
     function get_entry($key,$value) {
         $this->db->select('id, owner, name, description, logo, startdate, enddate, status, category_id');
         $this->db->from('project');
         $this->db->where($key, $value);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+    function get_all() {
+        $this->db->select('id, owner, name, description, logo, startdate, enddate, status, category_id');
+        $this->db->from('project');
+        $this->db->limit('12');
         $query = $this->db->get();
         return $query->result_array();
     }

@@ -34,9 +34,9 @@ font-size: 24px;
 			<a class="navbar-brand" href=<?php echo base_url('');?>> <span id=title>folio</span></a>
 		</div>
 		<div class="navbar-collapse collapse navbar-right">
-			<form class="navbar-form navbar-right" role="form" method='get' action='.'>
+			<form class="navbar-form navbar-right" role="form" method='get' action=<?php echo base_url('index.php/search/all/');?>>
 				<div class="form-group">
-					<input type="text" placeholder="search" class="form-control" style="padding-right: 0px; cursor: auto;">
+					<input type="text" placeholder="search" name='keywords' class="form-control" style="padding-right: 0px; cursor: auto;">
 				</div>
 				<button type="submit" class="btn btn-success">Search</button>
 			</form>
