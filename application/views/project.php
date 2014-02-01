@@ -9,9 +9,8 @@ include ('templates/info_card.php');
 <html>
 	<?php
 	open_page_header('template page');
-	
-	//This is for the image browser.. works because Im welcome page....
-	echo '<script type="text/javascript" src="assets/html5gallery/html5gallery.js"></script>';
+	$src = base_url('assets/html5gallery/html5gallery.js');
+	echo "<script src=$src></script>";
 	close_page_header();?>
 	<body>
 		<?php headmenu(); ?>
