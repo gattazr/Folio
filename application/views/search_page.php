@@ -1,87 +1,47 @@
 <?php 
 include ('templates/page_header.php');
 include ('templates/headmenu.php');
+include ('templates/info_card.php');
 ?>
 
 
 <html>
-
-    <title>Project Search Page</title>
-
 	<?php
-	open_page_header('template page');
+	open_page_header('Search projects');
 	
 	close_page_header();
-?>
-
+    ?>
 	<body>
-
-<?php headmenu(); ?>
+    <?php headmenu(); ?>
 	<div class="container">
-
-
-
         <div class="row">
-
-
-
-            <div class="col-sm-3" style="background-color:#EDEDED;float:right;" align="center">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-9">
+                <div class="page-header">
+                    <h2>All Projects</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3" style="background-color:#EDEDED;">
                 <?php
 
-                $categories = array('Art','Comics','Design','Photography','Technology','Theatre','Web Development');
-                
-
-                foreach($categoryArray as &$category){?>
-                <div class="span3"><h3><a href="<?php echo $category['name'] ?>"> <?php echo $category['name']; ?></a></h3></div>
-                <?php } ?>
-
-
-            </div>
-
-            <div class="col-sm-9">
-                        <!--if this user is the one signed in say 'My Projects', otherwise say 'Their Projects' -->
-                    <div class="page-header">
-                   		<h2>All Projects</h2>
-
+                foreach($categories as &$category){?>
+                    <div class="span3">
+                        <h3><a href=<?php echo base_url('index.php/search/project/'.$category['id']) ?>> <?php echo $category['name']; ?></a></h3>
                     </div>
+            <?php } ?>
             </div>
-
-
-		    <ul class="dropdown-menu dropdown-menu-left">
-			    <li><a href=<?php echo base_url('index.php/user/profile');?>>Profile</a></li>
-			    <li><a href=<?php echo base_url('index.php/user/sign_out');?>>Sign out</a></li>
-		    </ul>
-
-
             <div class="col-sm-9">
 
-                    <?php
-//                        $projects = array(1, 2,3,4,5); //1 for now but will be array of members later. Always has at least one.
-                        $projects = $projectArray;
-
-                        foreach($projects as &$project)
-                        {?>
-	                        <div class="col-sm-4">
-		                        <div class="panel panel-default">
-			                        <div class="panel-heading">
-				
-				                        <h3 class="panel-title">
-                                        <?php echo $project['name'] ?>
-                                        </h3>
-			                        </div>
-			                        <div class="panel-body">
-                                    <img src="<?php echo $project['logo'] ?>" alt="t"  height="250" width="220">
-
-			                        </div>
-		                        </div>
-	                        </div>
-                    <?php } ?>
+                <?php
+                foreach($projects as $project){
+                    project_info_card($project, 4);
+                }
+                ?>
+                </div>
             </div>
-
-        </div>
-
-  	</div>	
-			
-
+      	</div>
 	</body>
 <html>

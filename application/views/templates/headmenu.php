@@ -28,7 +28,7 @@ body{
 		<div class="navbar-collapse collapse navbar-right">
 			<ul class="nav navbar-nav">
 				<li><a href=<?php echo base_url('index.php/search/');?>>Projects</a></li>
-				<li><a href=<?php echo base_url('index.php/project/new');?>>Start a project</a></li>
+				<li><a href=<?php echo base_url('index.php/project/add_project');?>>Start a project</a></li>
 				<?php
 				if($isLogged){
 				?>

@@ -21,27 +21,24 @@ class Search extends CI_Controller {
 	{
 
 		$this->load->model('category_model');
-		$data['categoryArray'] = $this->category_model->get_entrys();
-
         $this->load->model('project_model');
-        $data['projectArray'] = $this->project_model->get_popular();
+
+		$data['categories'] = $this->category_model->get_entrys();
+        $data['projects'] = $this->project_model->get_popular();
+
+		$this->load->view('search_page', $data);
+	}
+
+	public function project($aCategory){
+
+		$this->load->model('category_model');
+		$this->load->model('project_model');
+
+		$data['categories'] = $this->category_model->get_entrys();
+        $data['projects'] = $this->project_model->get_entry('category_id', $aCategory);
 
 		$this->load->view('search_page', $data);
 
-
-//        $this->load->model('project_model');
-
-
-/*
-        $popularResult = $this->project_model->get_popular();
-        $data['popularResult'] = $popularResult;
-        $localResult = $this->project_model->get_local();
-        $data['localResult'] = $localResult;
-        $recentResult = $this->project_model->get_recent();
-        $data['recentResult'] = $recentResult;
-
-        $this->load->view('welcome', $data);
-*/
 	}
 }
 
