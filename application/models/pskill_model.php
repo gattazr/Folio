@@ -10,13 +10,11 @@ class pskill_model extends CI_Model {
         parent::__construct();
     }
 
-
-    function get_entry(){
+    function get_entry($key, $value){
 //        $this->owner_id = $this->input->post('owner_id');
-        $this->owner = '3';
-
+        //$this->owner = $key;
         $this->db->select('name,level');
-        $this->db->where('owner',$this->owner);
+        $this->db->where($key,$value);
 
         $query = $this->db->get('pskill')->result_array();
 

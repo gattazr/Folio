@@ -14,11 +14,26 @@ class project_model extends CI_Model {
         parent::__construct();
     }
 
-    function get_collaborators() {
-        $projectID = 1;
+    function get_entry($key,$value) {
+        $this->db->select('id, owner, name, description, logo, startdate, enddate, status, category_id');
+        $this->db->from('project');
+        $this->db->where($key, $value);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    function get_information($projectID) {
+        $this->db->select('category.name, project.startdate, project.enddate, project.status');
+        $this->db->from('category, project');
+        $this->db->where('project.category_id = category.id AND project.id = ' . $projectID);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    function get_collaborators($projectID) {
         $this->db->select('user.firstname, user.lastname, user.city, user.country, user.avatar, collaborators.start_date, collaborators.description');
         $this->db->from('user, project, collaborators');
-        $where = 'user.id = collaborators.user_id AND collaborators.project_id = project.id AND project.id = ' . $projectID;        
+        $where = 'user.id = collaborators.user_id AND collaborators.project_id = project.id AND project.id = '. $projectID;        
         $this->db->where($where);
         $query = $this->db->get();
         return $query->result_array();
