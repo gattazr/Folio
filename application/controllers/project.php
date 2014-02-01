@@ -38,12 +38,25 @@ class Project extends CI_Controller {
 	}
 
     public function add_project(){
-//		$data['categoryArray'] = $this->category_model->get_entrys();
+        $this->load->model('category_model');
+		$data['categoryArray'] = $this->category_model->get_entrys();
 //        $data['username'] = $this->session->userdata('user_id');
-        $this->load->view('add_project');
+
+        $data['username'] = $this->session->userdata('username');
+        $this->load->model('user_model');
+        $data['userset'] = $this->user_model->find_entry('username', $data['username']);
+        $data['id'] = $data['userset']['id'];
+
+        $this->load->view('add_project', $data);
     }
 
     public function new_project(){
+
+
+        if ($this->input->post('submitted') != NULL){
+           // echo 'valid new project';
+        }
+
 
         $data["id"] = $this->input->post('project_id');
         $data["owner"] = $this->input->post('owner_id');
@@ -52,7 +65,7 @@ class Project extends CI_Controller {
         $data["logo"] = $this->input->post('logo');
         $data["startdate"] = $this->input->post('startdate');
         $data["enddate"] = $this->input->post('enddate');
-        $data["category"] = $this->input->post('category');
+        $data["category_id"] = $this->input->post('category_id');
         
         $this->load->model('project_model', 'project');
 
