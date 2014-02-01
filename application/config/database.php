@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = '';
-$db['default']['password'] = '';
-$db['default']['database'] = '';
+$db['default']['hostname'] = 'db.cs.wwu.edu';
+$db['default']['username'] = 'sjodinj2_writer';
+$db['default']['password'] = 'EEr5vEVz3g';
+$db['default']['database'] = 'sjodinj2';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
