@@ -80,9 +80,11 @@ include ('templates/info_card.php');
 
 	<div class="row">
 	<?php
-		foreach($projects as $key => $project){
-			project_info_card($project,4);
-		} 
+		if($projects){
+			foreach($projects as $key => $project){
+				project_info_card($project,4);
+			}
+		}
 		?>
   	</div>	
 			
