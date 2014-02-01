@@ -54,7 +54,9 @@ function user_info_card($user, $colWidth) {
     echo $user['avatar'];
     echo '"/></div>';
     echo '<div class="panel-text">';
-    echo $user['description'];
+    if (isset($user['description'])) {
+        echo $user['description'];
+    }
     echo '</div></div></div></div>';
 }
 
