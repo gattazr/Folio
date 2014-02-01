@@ -22,7 +22,11 @@ function project_info_card($project, $colWidth) {
     echo '<div class="panel panel-default">';
     echo '<div class="panel-heading">';
 	echo '<h3 class="panel-title">';
+    echo '<a href="../project/';
+    echo $project['id'];
+    echo '">';
     echo $project['name'];
+    echo '</a>';
     echo '</h3></div>';
     echo '<div class="panel-body">';
     echo '<div class="panel-image">';
@@ -44,9 +48,13 @@ function user_info_card($user, $colWidth) {
     echo '<div class="panel panel-default">';
     echo '<div class="panel-heading">';
 	echo '<h3 class="panel-title">';
+    echo '<a href="../user/';
+    echo $user['username'];
+    echo '">';
     echo $user['firstname'];
     echo ' ';
     echo $user['lastname'];
+    echo '</a>';
     echo '</h3></div>';
     echo '<div class="panel-body">';
     echo '<div class="panel-image">';
