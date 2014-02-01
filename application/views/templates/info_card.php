@@ -1,5 +1,19 @@
 <?php
 
+function skill_info_card($skill, $colWidth) {
+    echo '<div class="col-sm-';
+    echo $colWidth;
+    echo '">';
+    echo '<div class="panel panel-default">';
+    echo '<div class="panel-heading">';
+    echo '<h3 class="panel-title">';
+    echo $skill['name'];
+    echo '</h3></div>';
+    echo '<div class="panel-body">';
+    echo $skill['level'];
+    echo '</div></div></div>';
+}
+
 function project_info_card($project, $colWidth) {
     //colWidth is 4 for welcome page, 3 everywhere else
     echo '<div class="col-sm-';
@@ -16,6 +30,7 @@ function project_info_card($project, $colWidth) {
     echo $project['logo'];
     echo '"/></div>';
     echo '<div class="panel-text">';
+    echo 'By Someone';
     echo $project['description'];
     echo '</div></div></div></div>';
 }
