@@ -6,16 +6,32 @@ function headmenu(){
 		$isLogged = false;
 	}
 ?>
+
+
+
 <style>
 body{
 	padding-top: 70px;
 	padding-bottom: 30px;
 }
+
+.navbar{
+background:#fff;
+border-bottom: 1px solid grey;
+	font: 13px Verdana, 'Lucida Grande';
+	color:3399cc;
+}
+
+#title{
+font-size: 24px;
+}
+
+
 </style>
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar navbar-fixed-top" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
-			<a class="navbar-brand" href=<?php echo base_url('');?>>Folio</a>
+			<a class="navbar-brand" href=<?php echo base_url('');?>> <span id=title>folio</span></a>
 		</div>
 		<div class="navbar-collapse collapse navbar-right">
 			<form class="navbar-form navbar-right" role="form" method='get' action='.'>
