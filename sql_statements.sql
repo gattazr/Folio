@@ -7,6 +7,9 @@ create table user(id INT NOT NULL AUTO_INCREMENT, username varchar(255) NOT NULL
 alter table user modify username varchar(255) UNIQUE NOT NULL;
 alter table user modify password char(40) NOT NULL;
 
+alter table project add column category_id varchar(255);
+alter table project add FOREIGN KEY (category_id) REFERENCES category(id);
+
 
 
 
