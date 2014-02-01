@@ -85,8 +85,7 @@ class project_model extends CI_Model {
 
     function insert_entry($aProject) {
 
-        
-        $this->id = $aProject['owner_id'];
+        $this->id = $aProject['id'];
         $this->owner = $aProject['owner'];
         $this->name = $aProject['name'];
         $this->description = $aProject['description'];
@@ -95,6 +94,8 @@ class project_model extends CI_Model {
         $this->enddate = $aProject['enddate'];
 
         $this->db->insert('project', $this);
+
+        
     }
 
    

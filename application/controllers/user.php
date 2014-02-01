@@ -31,6 +31,7 @@ class User extends CI_Controller {
 		$this->load->view('signup');
 	}
 
+
 	public function sign_in(){
 		if(!$this->session->userdata('username')){
 			$email = $this->input->post('email');
@@ -107,6 +108,8 @@ class User extends CI_Controller {
 		
 		
 	}
+
+
 
 }
 

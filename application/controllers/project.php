@@ -36,6 +36,30 @@ class Project extends CI_Controller {
         $data['information'] = $information;
         $this->load->view('project', $data);	
 	}
+
+    public function add_project(){
+//		$data['categoryArray'] = $this->category_model->get_entrys();
+//        $data['username'] = $this->session->userdata('user_id');
+        $this->load->view('add_project');
+    }
+
+    public function new_project(){
+
+        $data["id"] = $this->input->post('project_id');
+        $data["owner"] = $this->input->post('owner_id');
+        $data["name"] = $this->input->post('name');
+        $data["description"] = $this->input->post('description');
+        $data["logo"] = $this->input->post('logo');
+        $data["startdate"] = $this->input->post('startdate');
+        $data["enddate"] = $this->input->post('enddate');
+        $data["category"] = $this->input->post('category');
+        
+        $this->load->model('project_model', 'project');
+
+        $this->project->insert_entry($data);
+        header('Location: ' . base_url('index.php/project/' . $this->db->insert_id()));
+    }
+
 }
 
 /* End of file project.php */
