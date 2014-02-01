@@ -56,6 +56,15 @@ class User extends CI_Controller {
 		$this->load->view('profile');
 	}
 
+	public function showUser($aUsername){
+		$aUser = $this->user->find_entry('username', $aUsername);
+		if($aUser){
+			$this->load->view('profile');
+		}else{
+			show_404();
+		}
+	}
+
 }
 
 /* End of file welcome.php */

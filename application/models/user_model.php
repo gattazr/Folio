@@ -17,12 +17,10 @@ class User_model extends CI_Model {
         parent::__construct();
     }
 
-    function find_entry(){
-//        $this->username = $this->input->post('username');
-        $this->username = 'devEusername';
+    function find_entry($aKey, $aValue){
 
         $this->db->select('id, username, firstname, lastname, city, country, avatar, password, email');
-        $this->db->where('username',$this->username);
+        $this->db->where($aKey, $aValue);
         $query = $this->db->get('user')->result_array();
 
         return $query;
