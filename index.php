@@ -163,9 +163,6 @@ if (defined('ENVIRONMENT'))
 	// The name of THIS file
 	define('SELF', pathinfo(__FILE__, PATHINFO_BASENAME));
 
-	//Define the base URL of the website
-	define('BASE_URL', 'http://www.hackaton.dev/');
-
 	// The PHP file extension
 	// this global constant is deprecated.
 	define('EXT', '.php');
