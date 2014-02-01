@@ -17,30 +17,47 @@ class Search extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-
+	public function __construct(){
+		parent::__construct();
 		$this->load->model('category_model');
         $this->load->model('project_model');
+	}
 
+	public function index(){
 		$data['categories'] = $this->category_model->get_entrys();
-        $data['projects'] = $this->project_model->get_popular();
+        $data['projects'] = $this->project_model->get_all();
 
 		$this->load->view('search_page', $data);
 	}
 
 	public function project($aCategory){
-
-		$this->load->model('category_model');
-		$this->load->model('project_model');
-
 		$data['categories'] = $this->category_model->get_entrys();
         $data['projects'] = $this->project_model->get_entry('category_id', $aCategory);
 
 		$this->load->view('search_page', $data);
+	}
+
+	public function all(){
+		$wKeywords = $this->input->get('keywords');
+		$wKeywords = explode(" ", $wKeywords);
+		
+		$data['categories'] = $this->category_model->get_entrys();
+
+		foreach ($wKeywords as $wKeyword ) {
+			$wLikeCondition[] = array('name', $wKeyword); 
+			$wLikeCondition[] = array( 'description', $wKeyword); 
+			// loook for name of projects
+			// look in description of repo
+		}
+		$data['projects'] = $this->project_model->get_like($wLikeCondition);
+
+		$this->load->view('search_page', $data);
+	}
+
+	private function addToArray($aTargetArray, $aSourceArray){
 
 	}
 }
 
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */
+/* End of file search.php */
+/* Location: ./application/controllers/search.php */
