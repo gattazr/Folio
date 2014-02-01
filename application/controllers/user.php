@@ -26,6 +26,11 @@ class User extends CI_Controller {
 		$this->load->library('encrypt');
 	}
 
+	public function sign_up()
+	{
+		$this->load->view('signup');
+	}
+
 	public function sign_in(){
 		if(!$this->session->userdata('username')){
 			$email = $this->input->post('email');
@@ -79,6 +84,28 @@ class User extends CI_Controller {
 			'projects' => $wProjects
 			);
 			$this->load->view('profile', $data);
+	}
+
+	public function new_user(){
+		$data["username"] = $this->input->post('name');
+		$data["email"] = $this->input->post('email');
+		$data["password"] = $this->encrypt->sha1($this->input->post('password'));
+		$confpass = $this->encrypt->sha1($this->input->post('confpass'));
+//test
+		if($data["password"] != $confpass || $data["email"] == Null || $data["username"] == Null)
+		{
+			
+			header('Location: ' . $_SERVER['HTTP_REFERER']);
+			
+		}	
+		$data["firstname"] = $this->input->post('First name');
+		$data["lastname"] = $this->input->post('Last name');
+		$data["city"] = $this->input->post('city');
+		$data["country"] = $this->input->post('country');
+
+		$this->user->insert_entry($data);
+		
+		
 	}
 
 }
