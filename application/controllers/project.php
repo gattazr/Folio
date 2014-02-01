@@ -17,23 +17,24 @@ class Project extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{   
-        $projectID = 2;
-        $this->load->model('project_model');
+	public function showProject($projectID){
+		$this->load->model('project_model');
         $this->load->model('pskill_model');
         $this->load->model('user_model');
+        
         $project = $this->project_model->get_entry('id', $projectID);
+
         $user = $this->user_model->find_entry('id',$project[0]['owner']);
         $information = $this->project_model->get_information($projectID);
         $collaborators = $this->project_model->get_collaborators($projectID);
+        
         $data['collaborators'] = $collaborators;
         $data['user'] = $user;
         $skill = $this->pskill_model->get_entry('owner', $projectID);
         $data['project'] = $project;
         $data['skill'] = $skill;
         $data['information'] = $information;
-        $this->load->view('project', $data);
+        $this->load->view('project', $data);	
 	}
 }
 

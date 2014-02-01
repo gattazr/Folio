@@ -44,7 +44,7 @@ $route['404_override'] = '';
 $route['user/(([a-z]|[1-9][A-Z])+)'] = "user/showUser/$1";
 $route['user/profile'] = "user/profile";
 
-$route['project/:num'] = "project/showProject/$1";
+$route['project/(:num)'] = "project/showProject/$1";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
