@@ -24,6 +24,7 @@ class project_model extends CI_Model {
         $query = $this->db->get();
 
         return $query;
+<<<<<<< HEAD
     }
 
 
@@ -75,6 +76,8 @@ class project_model extends CI_Model {
     function remove_entry(){
 
         NULL;
+=======
+>>>>>>> devD
     }
 
 }
