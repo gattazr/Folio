@@ -17,10 +17,7 @@ include ('templates/info_card.php');
 		<div class="container theme-showcase" role="main">
 
 			<div class="jumbotron">
-				<h1>Main Project Logo</h1>
-               <!-- replace main project logo with below to get image from db
-                <h1><?php //$project[0]['logo']?></h1>-->
-				<p>This is for our main logo for the project</p>
+                <img style="overflow:hidden;" src="<?php echo $project[0]['logo']; ?> " height="50%" width="100%"/>
 			</div>
 
 			
