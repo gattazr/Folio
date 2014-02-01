@@ -7,13 +7,13 @@ function open_page_header($aTitle){
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title><?php echo $aTitle;?></title>
 		<!-- Bootstrap core CSS -->
-		<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href=<?php echo constant('BASE_URL').'../assets/dist/css/bootstrap.min.css'?> rel="stylesheet">
 		<!-- Bootstrap theme -->
-		<link href="dist/css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href=<?php echo constant('BASE_URL').'../assets/dist/css/bootstrap-theme.min.css'?> rel="stylesheet">
 
 		<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    		<script src="assets/dist/js/bootstrap.min.js"></script>
-		<link href="assets/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    	<script src=<?php echo constant('BASE_URL').'../assets/dist/js/bootstrap.min.js'?>></script>
+		<link href=<?php echo constant('BASE_URL').'../assets/dist/css/bootstrap-theme.min.css'?> rel="stylesheet">
 	<?
 }
 
