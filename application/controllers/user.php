@@ -20,12 +20,10 @@ class User extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('user_model', 'user');
+		$this->load->model('skill_model', 'skill');
+		$this->load->model('collaborators_model', 'collaborator');
+		$this->load->model('project_model', 'project');
 		$this->load->library('encrypt');
-	}
-
-	public function index()
-	{
-		$this->load->view('example');
 	}
 
 	public function sign_in(){
@@ -53,16 +51,34 @@ class User extends CI_Controller {
 	}
 
 	public function profile(){
-		$this->load->view('profile');
+		if($this->session->userdata('username')){
+			$this->showUser($this->session->userdata('username'));
+		}else{
+			header('Location: ' . $_SERVER['HTTP_REFERER']);
+		}
 	}
 
 	public function showUser($aUsername){
-		$aUser = $this->user->find_entry('username', $aUsername);
-		if($aUser){
-			$this->load->view('profile');
-		}else{
+		$wUser = $this->user->find_entry('username', $aUsername);
+		if(!$wUser){
 			show_404();
 		}
+		$wSkills = $this->skill->find_entries('owner',$wUser['id']);
+		$wCollaborators = $this->collaborator->find_collaborators('user_id', $wUser['id']);
+		$wProjects = null;
+		if($wCollaborators){
+			foreach($wCollaborators as $wCollaborator){
+				$wProject = $this->project->find_entry('id', $wCollaborator['project_id']);
+				$wProjects[] = $wProject[0];
+			}
+		}
+
+		$data = array(
+			'users' => $wUser,
+			'skills' => $wSkills,
+			'projects' => $wProjects
+			);
+			$this->load->view('profile', $data);
 	}
 
 }

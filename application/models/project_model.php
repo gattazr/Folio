@@ -56,11 +56,11 @@ class project_model extends CI_Model {
 
         return $query->result_array();
     }
-    function get_one(){
+    function find_entry($aKey, $aValue){
 
         $this->db->select('id,owner,name,description,logo,startdate,enddate');
         $this->db->from('project');
-        $this->db->limit('1');
+        $this->db->where($aKey, $aValue);
 
         $query = $this->db->get();
 

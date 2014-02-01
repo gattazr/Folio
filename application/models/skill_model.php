@@ -11,17 +11,15 @@ class skill_model extends CI_Model {
     }
 
 
-    function get_entry(){
-//        $this->owner_id = $this->input->post('owner_id');
-        $this->owner = '12';
+    function find_entries($aKey, $aValue){
+        $this->db->select('owner, name,level');
+        $this->db->where($aKey, $aValue);
 
-        $this->db->select('name,level');
-        $this->db->where('owner',$this->owner);
+        $wResult = $this->db->get('skill')->result_array();
 
-        $query = $this->db->get('skill')->result_array();
-
-        return $query;
+        return $wResult;
     }
+
 
 
     function insert_entry() {

@@ -21,9 +21,9 @@ class User_model extends CI_Model {
 
         $this->db->select('id, username, firstname, lastname, city, country, avatar, password, email');
         $this->db->where($aKey, $aValue);
-        $query = $this->db->get('user')->result_array();
+        $wResult = $this->db->get('user')->result_array();
 
-        return $query;
+        return $wResult[0];
     }
 
     function insert_entry() {
