@@ -5,6 +5,7 @@ create table skill ( owner int, name varchar(255), level varchar(255), PRIMARY K
 
 create table user(id INT NOT NULL AUTO_INCREMENT, username varchar(255) NOT NULL, firstname varchar(255), lastname varchar(255), city varchar(255), country varchar(255), avatar varchar(255), PRIMARY KEY (id) );
 alter table user modify username varchar(255) UNIQUE NOT NULL;
+alter table user modify password char(40) NOT NULL;
 
 
 
