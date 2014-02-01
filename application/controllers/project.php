@@ -19,9 +19,17 @@ class Project extends CI_Controller {
 	 */
 	public function index()
 	{   
+        $projectID = 2;
         $this->load->model('project_model');
-        $collaborators = $this->project_model->get_collaborators();
+        $this->load->model('pskill_model');
+        $project = $this->project_model->get_entry('id', $projectID);
+        $information = $this->project_model->get_information($projectID);
+        $collaborators = $this->project_model->get_collaborators($projectID);
         $data['collaborators'] = $collaborators;
+        $skill = $this->pskill_model->get_entry('owner', $projectID);
+        $data['project'] = $project;
+        $data['skill'] = $skill;
+        $data['information'] = $information;
         $this->load->view('project', $data);
 	}
 }
