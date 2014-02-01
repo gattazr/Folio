@@ -52,6 +52,10 @@ class User extends CI_Controller {
 		header('Location: ' . base_url(''));
 	}
 
+	public function profile(){
+		$this->load->view('profile');
+	}
+
 }
 
 /* End of file welcome.php */
