@@ -101,12 +101,12 @@ class project_model extends CI_Model {
     function update_entry($aProject) {
         
         $data = array(
-                    'id' = $aProject['id'],
-                    'name' = $aProject['name'],
-                    'description' = $aProject['description'],
-                    'logo' = $aProject['logo'],
-                    'startdate' = $aProject['startdate'],
-                    'enddate' = $aProject['enddate'],
+                    'id' => $aProject['id'],
+                    'name' => $aProject['name'],
+                    'description' => $aProject['description'],
+                    'logo' => $aProject['logo'],
+                    'startdate' => $aProject['startdate'],
+                    'enddate' => $aProject['enddate'],
         );
 
         $this->db->where('id', $data['id']);
