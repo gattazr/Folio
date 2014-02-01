@@ -13,8 +13,7 @@ include ('templates/info_card.php');
 		<div class="container theme-showcase" role="main">
 
 			<div class="jumbotron">
-				<h1>Template test page</h1>
-				<p>This is a simple example of Jumbotron</p>
+			<img src='<?php echo base_url('/assets/folioDesign.png');?>' width=100%>
 			</div>
 
 			<div class="page-header">
