@@ -35,4 +35,11 @@ class User_model extends CI_Model {
         $this->db->insert('user', $this);
     }
 
+    /*
+    function delete_entry() {
+        $username = 'devDusername';
+        $this->db->where('username', $username);
+        $this->db->delete('user');
+    }
+    */
 }

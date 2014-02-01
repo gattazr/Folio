@@ -19,10 +19,21 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('example');
-		$this->load->model('user_model');
-		$this->user_model->update_entry();
-//		$this->skill_model->insert();
+		//$this->load->view('example');
+		//$this->load->model('user_model');
+		//$this->user_model->update_entry();
+		//$this->skill_model->insert();
+
+        $this->load->model('project_model');
+        
+        $popularResult = $this->project_model->get_popular();
+        $data['popularResult'] = $popularResult;
+        $localResult = $this->project_model->get_local();
+        $data['localResult'] = $localResult;
+        $recentResult = $this->project_model->get_recent();
+        $data['recentResult'] = $recentResult;
+
+        $this->load->view('welcome', $data);
 	}
 }
 
