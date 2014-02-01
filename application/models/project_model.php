@@ -83,44 +83,42 @@ class project_model extends CI_Model {
     }
 
 
-    function insert_entry() {
+    function insert_entry($aProject) {
 
         
-        $this->id = $this->input->post('owner_id');
-        $this->owner = $this->input->post('owner');
-        $this->name = $this->input->post('name');
-        $this->description = $this->input->post('description');
-        $this->logo = $this->input->post('logo');
-        $this->startdate = $this->input->post('startdate');
-        $this->enddate = $this->input->post('enddate');
+        $this->id = $aProject['owner_id'];
+        $this->owner = $aProject['owner'];
+        $this->name = $aProject['name'];
+        $this->description = $aProject['description'];
+        $this->logo = $aProject['logo'];
+        $this->startdate = $aProject['startdate'];
+        $this->enddate = $aProject['enddate'];
 
         $this->db->insert('project', $this);
     }
 
-   /* 
-    function update_entry() {
+   
+    function update_entry($aProject) {
         
-        $this->id = $this->input->post('id');
-
         $data = array(
-                    'owner' = $this->input->post('owner'),
-                    'name' = $this->input->post('name'),
-                    'description' = $this->input->post('description'),
-                    'logo' = $this->input->post('logo'),
-                    'startdate' = $this->input->post('startdate'),
-                    'enddate' = $this->input->post('enddate'),
+                    'id' = $aProject['id'],
+                    'name' = $aProject['name'],
+                    'description' = $aProject['description'],
+                    'logo' = $aProject['logo'],
+                    'startdate' = $aProject['startdate'],
+                    'enddate' = $aProject['enddate'],
         );
 
-        $this->db->where('id', $this->id);
-        $this->db->update('mytable', $data);
+        $this->db->where('id', $data['id']);
+        $this->db->update('project', $data);
 
     }
 
-    function remove_entry(){
-
-        NULL;
+    function remove_entry($aProject){
+        
+        $this->db->where('id', $aProject['id']);
+        $this->db->delete('project'); 
     }
-    */
 }
 
 

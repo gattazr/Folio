@@ -9,7 +9,7 @@ class images_model extends CI_Model {
         parent::__construct();
     }
 
-    function get_entrys($aKey, $aValue){
+    function get_entries($aKey, $aValue){
         $this->db->where($aKey, $aValue);
         $this->db->select('id, project_id, path');
 
@@ -19,34 +19,22 @@ class images_model extends CI_Model {
 
     }
 
-    function insert_entry() {
-        $wImage['project_id'] = $this->input->post('project_id');;
-        $wImage['id'] = $this->input->post('id');;
-        $wImage['path'] = $this->input->post('path');;
-        
-        $this->project_id = $wImage['project_id'];
-        $this->path = $wImage['path'];
+    function insert_entry($aImage) {
+        $this->project_id = $aImage['project_id'];
+        $this->path = $aImage['path'];
 
 
         $this->db->insert('images', $this);
     }
 
     function update_entry() {
-        /*
-        $this->project_id = $this->input->post('project_id');
-        $this->path = $this->input->post('path');
-        */
-
-        $wImage['project_id'] = $this->input->post('');;
-        $wImage['path'] = $this->input->post('');;
-        
         $data = array(
             /*
             'project_id' => $this->input->post('project_id2'),
             'path' => $this->input->post('path2')
             */
-            'project_id' => $wImage['project_id'],
-            'path' => $wImage['path']
+            'project_id' => $aImage['project_id'],
+            'path' => $aImage['path']
         );
 
         $this->db->where('project_id', $this->project_id);

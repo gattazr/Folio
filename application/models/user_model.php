@@ -26,23 +26,17 @@ class User_model extends CI_Model {
         return $wResult[0];
     }
 
-    function insert_entry() {
-        /*$this->username = $this->input->post('username');
-        $this->firstname = $this->input->post('firstname');
-        $this->lastname = $this->input->post('lastname'):
-        $this->city = $this->input->post('city');
-        $this->country = $this->input->post('country');
-        $this->avatar = $this->input->post('avatar'):*/
-
+    function insert_entry($aArray) {
+        
         $this->id = 0;
-        $this->username = 'devEusername';
-        $this->firstname = 'devEfirstname';
-        $this->lastname = 'devElastname';
-        $this->city = 'devEcity';
-        $this->country = 'devEcountry';
-        $this->avatar = 'devEavatar';
-        $this->password = 'devEpassword';
-        $this->email = 'devEemail';
+        $this->username = $aArray['username'];
+        $this->firstname = $aArray['firstname'];
+        $this->lastname = $aArray['lastname'];
+        $this->city = $aArray['city'];
+        $this->country = $aArray['country'];
+        $this->avatar = $aArray['avatar'];
+        $this->password = $aArray['password'];
+        $this->email = $aArray['email'];
 
         $this->db->insert('user', $this);
     }

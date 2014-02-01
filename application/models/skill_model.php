@@ -22,38 +22,27 @@ class skill_model extends CI_Model {
 
 
 
-    function insert_entry() {
-        $wOwner['owner'] = $this->input->post('owner_id');
-        $wOwner['name'] = $this->input->post('name');
-        $wOwner['level'] = $this->input->post('level');
-        
+    function insert_entry($aEntry) {
 
-        $this->owner = $wOwner['owner'];
-        $this->name = $wOwner['name'];
-        $this->level = $wOwner['leve'];
+        $this->owner = $aEntry['owner'];
+        $this->name = $aEntry['name'];
+        $this->level = $aEntry['leve'];
 
         $this->db->insert('skill', $this);
     }
 
-    function remove_entry(){
-        $wOwner['owner'] = $this->input->post('owner_id');
-        $wOwner['name'] = $this->input->post('name');
+    function remove_entry($aEntry){
 
-
-        $this->owner_id = $wOwner['owner'];
-        $this->name = $wOwner['name'];        
+        $this->owner_id = $aEntry['owner'];
+        $this->name = $aEntry['name'];        
         $this->db->delete('skill', $this);
     }
 
-    function modify_entry(){
-        $wOwner['owner'] = $this->input->post('owner_id');
-        $wOwner['name'] = $this->input->post('name');
-        $wOwner['level'] = $this->input->post('level');
-
+    function modify_entry($aEntry){
         $data = array(
-            'owner' => $wOwner['owner_id'],
-            'name' => $wOwner['owner'],
-            'level' => $wOwner['name']
+            'owner' => $aEntry['owner_id'],
+            'name' => $aEntry['owner'],
+            'level' => $aEntry['name']
         );
 
         $this->db->where('owner', $data['data']);
