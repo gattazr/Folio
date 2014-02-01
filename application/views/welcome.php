@@ -1,6 +1,7 @@
 <?php 
 include ('templates/page_header.php');
 include ('templates/headmenu.php');
+include ('templates/info_card.php');
 ?>
 
 <html>
@@ -21,23 +22,8 @@ include ('templates/headmenu.php');
 			</div>
 			<div class="row">
 				<?php
-                    foreach ($popularResult as $row) { ?>
-                        <div class="col-sm-4">
-					        <div class="panel panel-default">
-						    <div class="panel-heading">
-							    <h3 class="panel-title"><?php echo $row['name'];?></h3>
-						    </div>
-						    <div class="panel-body">
-                                <div class="panel-image">
-                                    <img src="<?php echo $row['logo'];?>"/>
-                                </div>
-                                <div class="panel-text">
-                                    <?php echo $row['description'];?>
-                                </div>
-						    </div>
-					    </div>
-				    </div><!-- /.col-sm-4 -->
-                <?php
+                    foreach ($popularResult as $row) { 
+                        project_info_card($row, 4);
                     }
                 ?>
 			</div>
@@ -47,23 +33,8 @@ include ('templates/headmenu.php');
 			</div>
 			<div class="row">
 				<?php
-                    foreach ($recentResult as $row) { ?>
-                        <div class="col-sm-4">
-					        <div class="panel panel-default">
-						    <div class="panel-heading">
-							    <h3 class="panel-title"><?php echo $row['name'];?></h3>
-						    </div>
-						    <div class="panel-body">
-                                <div class="panel-image">
-                                    <img src="<?php echo $row['logo'];?>"/>
-                                </div>
-                                <div class="panel-text">
-                                    <?php echo $row['description'];?>
-                                </div>
-						    </div>
-					    </div>
-				    </div><!-- /.col-sm-4 -->
-                <?php
+                    foreach ($recentResult as $row) {
+                        project_info_card($row, 4);
                     }
                 ?>
 			</div>
@@ -73,23 +44,8 @@ include ('templates/headmenu.php');
 			</div>
 			<div class="row">
 				<?php
-                    foreach ($localResult as $row) { ?>
-                        <div class="col-sm-4">
-					        <div class="panel panel-default">
-						    <div class="panel-heading">
-							    <h3 class="panel-title"><?php echo $row['name'];?></h3>
-						    </div>
-						    <div class="panel-body">
-                                <div class="panel-image">
-                                    <img src="<?php echo $row['logo'];?>"/>
-                                </div>
-                                <div class="panel-text">
-                                    <?php echo $row['description'];?>
-                                </div>
-						    </div>
-					    </div>
-				    </div><!-- /.col-sm-4 -->
-                <?php
+                    foreach ($localResult as $row) { 
+                        project_info_card($row, 4);
                     }
                 ?>
 			</div>
