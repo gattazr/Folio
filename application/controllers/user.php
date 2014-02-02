@@ -28,7 +28,30 @@ class User extends CI_Controller {
 
 	public function sign_up()
 	{
-		$this->load->view('signup');
+		if($this->session->userdata('username')){
+			header('Location: '.base_url(''));
+		}
+		$wUser['id'] = '';
+		$wUser['username'] = '';
+		$wUser['firstname'] = '';
+		$wUser['lastname'] = '';
+		$wUser['city'] = '';
+		$wUser['country'] = '';
+		$wUser['avatar'] = '';
+		$wUser['password'] = '';
+		$wUser['email'] = '';
+		$data['user'] = $wUser;
+		$this->load->view('signup', $data);
+	}
+
+	public function edit(){
+		if($this->session->userdata('username')){
+			$data['user'] = $this->user->find_entry('username', $this->session->userdata('username'));
+			
+			$this->load->view('signup', $data);
+		}else{
+			header('Location: ' . $_SERVER['HTTP_REFERER']);
+		}
 	}
 
 
@@ -107,7 +130,29 @@ class User extends CI_Controller {
         $data["avatar"] = NULL;
 
 		$this->user->insert_entry($data);
+		header('Location: ' . base_url('index.php/user/'.$data["username"]));
 		
+	}
+	public function save_user(){
+		$data["username"] = $this->input->post('name');
+		$data["email"] = $this->input->post('email');
+		$data["password"] = $this->encrypt->sha1($this->input->post('password'));
+		$confpass = $this->encrypt->sha1($this->input->post('confpass'));
+//test
+		if($data["password"] != $confpass || $data["email"] == Null || $data["username"] == Null)
+		{
+			
+			header('Location: ' . $_SERVER['HTTP_REFERER']);
+			
+		}	
+		$data["firstname"] = $this->input->post('firstname');
+		$data["lastname"] = $this->input->post('lastname');
+		$data["city"] = $this->input->post('city');
+		$data["country"] = $this->input->post('country');
+
+		$this->db->where('id', $this->session->userdata('id'));
+		$this->db->update('user', $data); 
+		header('Location: ' . base_url('index.php/user/'.$data["username"]));
 		
 	}
 

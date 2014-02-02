@@ -43,6 +43,7 @@ $route['404_override'] = '';
 
 $route['user/([a-zA-Z0-9]+)'] = "user/showUser/$1";
 $route['user/profile'] = "user/profile";
+$route['user/edit'] = "user/edit";
 
 $route['project/(:num)'] = "project/showProject/$1";
 
