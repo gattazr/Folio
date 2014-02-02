@@ -8,7 +8,7 @@ include ('templates/info_card.php');
 
 <html>
 	<?php
-	open_page_header('template page');
+	open_page_header('Project');
 	$src = base_url('assets/html5gallery/html5gallery.js');
 	echo "<script src=$src></script>";
 	close_page_header();?>

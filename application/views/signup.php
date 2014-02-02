@@ -8,7 +8,7 @@ include ('templates/info_card.php');
 
 <html>
 	<?php
-	open_page_header('template page');
+	open_page_header('Register');
 	
 	close_page_header();?>
 	<body>
@@ -34,10 +34,6 @@ include ('templates/info_card.php');
 							<input type="reset" value="Clear">
 					</form>
 				</div>
-
-				<!--<div class='col-sm-6' style="background-image:url(<?php echo base_url('assets/folioDesign.png');?>);">
-				</div>-->
-		
 	</div>
 					
 

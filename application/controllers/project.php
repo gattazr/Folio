@@ -37,40 +37,43 @@ class Project extends CI_Controller {
         $this->load->view('project', $data);	
 	}
 
-    public function add_project(){
+    public function edit(){
         $this->load->model('category_model');
-		$data['categoryArray'] = $this->category_model->get_entrys();
-//        $data['username'] = $this->session->userdata('user_id');
+    }
 
-        $data['username'] = $this->session->userdata('username');
-        $this->load->model('user_model');
-        $data['userset'] = $this->user_model->find_entry('username', $data['username']);
-        $data['id'] = $data['userset']['id'];
+    public function add_project(){
+        if($this->session->userdata('username')){
+            $this->load->model('category_model');
+            $data['categoryArray'] = $this->category_model->get_entrys();
 
-        $this->load->view('add_project', $data);
+            $data['username'] = $this->session->userdata('username');
+            $this->load->model('user_model');
+            $data['userset'] = $this->user_model->find_entry('username', $data['username']);
+            $data['id'] = $data['userset']['id'];
+
+            $this->load->view('add_project', $data);
+        }
+        
     }
 
     public function new_project(){
-
-
         if ($this->input->post('submitted') != NULL){
-           // echo 'valid new project';
+            $data["id"] = $this->input->post('project_id');
+            $data["owner"] = $this->session->userdata('id');
+            $data["name"] = $this->input->post('name');
+            $data["description"] = $this->input->post('description');
+            $data["logo"] = $this->input->post('logo');
+            $data["startdate"] = $this->input->post('startdate');
+            $data["enddate"] = $this->input->post('enddate');
+            $data["category_id"] = $this->input->post('category_id');
+            
+            $this->load->model('project_model', 'project');
+
+            $this->project->insert_entry($data);
+            header('Location: ' . base_url('index.php/project/' . $this->db->insert_id()));
+                // echo 'valid new project';
         }
-
-
-        $data["id"] = $this->input->post('project_id');
-        $data["owner"] = $this->input->post('owner_id');
-        $data["name"] = $this->input->post('name');
-        $data["description"] = $this->input->post('description');
-        $data["logo"] = $this->input->post('logo');
-        $data["startdate"] = $this->input->post('startdate');
-        $data["enddate"] = $this->input->post('enddate');
-        $data["category_id"] = $this->input->post('category_id');
-        
-        $this->load->model('project_model', 'project');
-
-        $this->project->insert_entry($data);
-        header('Location: ' . base_url('index.php/project/' . $this->db->insert_id()));
+        header('Location: '.base_url(''));
     }
 
 }
