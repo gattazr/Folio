@@ -6,7 +6,7 @@ include ('templates/info_card.php');
 
 <html>
 	<?php
-	open_page_header('template page');
+	open_page_header('Welcome to Folio!');
 	close_page_header();?>
 	<body>
 		<?php headmenu(); ?>
